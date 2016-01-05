@@ -16,7 +16,17 @@ import java.net.Socket;
 public class FromSend {
 	private Socket socket;
 	ServerSocket ssoc;
-	public FromSend(int roundport){
+	public FromSend(int roundport){//不正検知がOFFの時のコンストラクタ
+		 try {
+			ssoc = new ServerSocket(roundport,100);
+			
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+        
+        public FromSend(String peerip,String serverip,int roundport){//不正検知がONの時のコンストラクタ
 		 try {
 			ssoc = new ServerSocket(roundport,100);
 			
