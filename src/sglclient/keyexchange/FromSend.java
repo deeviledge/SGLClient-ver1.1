@@ -15,10 +15,10 @@ import java.net.Socket;
 
 public class FromSend {
 	private Socket socket;
-	ServerSocket ssoc;
+	ServerSocket serversoc;
 	public FromSend(int roundport){//不正検知がOFFの時のコンストラクタ
 		 try {
-			ssoc = new ServerSocket(roundport,100);
+			serversoc = new ServerSocket(roundport,100);
 			
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
@@ -27,13 +27,21 @@ public class FromSend {
 	}
         
         public FromSend(String peerip,String serverip,int roundport){//不正検知がONの時のコンストラクタ
-		 try {
-			ssoc = new ServerSocket(roundport,100);
-			
+		
+                 try {
+                    System.out.println("ソケットを生成/ServerSocketに接続を要求します");
+                    System.out.println(serverip+":"+roundport);
+                    serversoc = new ServerSocket(roundport);
+                    socket=serversoc.accept();
+                    socket.close();
+                    serversoc.close();
+                    
+                    System.out.println("SGLサーバ："+socket.getInetAddress()+"との接続完了");//接続先アドレスを返して表示
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
-		}
+                        System.out.println("ソケット生成プロセスでなんかあったぞ！");
+		}     
 	}
 	/**
 	 * 
@@ -43,7 +51,7 @@ public class FromSend {
 	public String KeyExchange(BigInteger pk){
 		String line = null;
 		try {
-			socket = ssoc.accept();
+			socket = serversoc.accept();
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			//公開鍵を受信
@@ -55,7 +63,7 @@ public class FromSend {
 			out.println(input);
 			//System.out.println("Peer client :" + "送信:" + input);
 			socket.close();
-			ssoc.close();
+			serversoc.close();
 			in.close();
 			out.close();
 		} catch (IOException e) {
