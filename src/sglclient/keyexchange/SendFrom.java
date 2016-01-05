@@ -54,16 +54,8 @@ public class SendFrom {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
                         System.out.println("ソケット生成プロセスでなんかあったぞ！");
-		}
-                
-                
-                
-                
-                
+		}     
 	}
-        
-        
-        
 	/**
 	 * 
 	 * @param pk
