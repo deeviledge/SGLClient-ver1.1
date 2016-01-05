@@ -17,6 +17,8 @@ import java.net.Socket;
 public class SendFrom {
 	private Socket socket;
         private ServerSocket serversoc;
+        
+        //不正検知がOFFの時のコンストラクタ
 	public  SendFrom(String peerip,int roundport){
 		try {
 			socket = new Socket( peerip , roundport );
@@ -26,7 +28,7 @@ public class SendFrom {
 		}
 	}
         
-        //コンストラクタのオーバーライド
+        //不正検知がONの時のコンストラクタ
         public  SendFrom(String peerip,String serverip,int roundport){
            
 		try {
