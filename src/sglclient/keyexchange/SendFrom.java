@@ -28,19 +28,7 @@ public class SendFrom {
         
         //コンストラクタのオーバーライド
         public  SendFrom(String peerip,String serverip,int roundport){
-            /*
-		try {
-                    System.out.println("ソケットを生成/ServerSocketに接続を要求します");
-                    System.out.println(serverip+":"+roundport);
-                    socket = new Socket( serverip , roundport );
-                    
-                    System.out.println("SGLサーバ："+socket.getInetAddress()+"との接続完了");//接続先アドレスを返して表示
-		} catch (IOException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-                        System.out.println("ソケット生成プロセスでなんかあったぞ！");
-		}
-            */    
+           
 		try {
                     System.out.println("ソケットを生成/ServerSocketに接続を要求します");
                     System.out.println(serverip+":"+roundport);
