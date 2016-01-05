@@ -98,7 +98,7 @@ public class RoundMain {
                                         //}else{//不正検知オプションがOFFのときの処理
                                         //    SendFrom SF = new SendFrom(SendToIP,Round_Port);		//公開鍵を交換
                                         //}
-                                        /*
+                                        
                                         
                                         
 					String line = SF.KeyExchange(exKey.getPublicKey());		//受信した公開鍵を取得
@@ -108,8 +108,9 @@ public class RoundMain {
 						String key = line.substring(3);
 						exKey.calculateKey(key);	//公開鍵から共有鍵を計算
 						//デバッグ目的で出力してるけど、最終的には消さないと鍵がバレる
-						//System.out.println("共通鍵:"+ exKey.getKey());
+						System.out.println("共通鍵:"+ exKey.getKey());
 					}
+                                            /*
 				}
                                 
 				//パターン③先に相手の公開鍵を受け取る
