@@ -170,7 +170,7 @@ public class RoundMain {
         *
         *
         */
-        public void SafeKeyExchange(){
+        public void SecureKeyExchange(){
 		
 		String exchangeFileName = "src/sglclient/conf/usr/xml_files/groups/Mandate_" + gs.getGroupName() + ".xml";
 		System.out.println(gs.getGroupName());
