@@ -25,23 +25,7 @@ public class FromSend {
 			e.printStackTrace();
 		}
 	}
-        //不正検知がONの時のコンストラクタ
-        public FromSend(String peerip,String serverip,int roundport){
-                 try {
-                    System.out.println("ソケットを生成/ServerSocketに接続を要求します");
-                    System.out.println(serverip+":"+roundport);
-                    serversoc = new ServerSocket(roundport);
-                    socket=serversoc.accept();
-                    socket.close();
-                    serversoc.close();
-                    
-                    System.out.println("SGLサーバ："+socket.getInetAddress()+"との接続完了");//接続先アドレスを返して表示
-		} catch (IOException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-                        System.out.println("ソケット生成プロセスでなんかあったぞ！");
-		}     
-	}
+
 	/**
 	 * 
 	 * @param pk
