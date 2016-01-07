@@ -179,7 +179,6 @@ public class RoundMain {
 		MyInformation mi = new MyInformation();
 		int myid = Integer.parseInt(mi.getUsrID());
 		
-		
 		//Peerの呼び出し
 		Peer peer = m.getKeyAgreement().getPeer(myid);
 		String SendToIP;
@@ -189,7 +188,8 @@ public class RoundMain {
 		//もっとエレガントに書けそう。気が向いたら、書き直します。
                 System.out.println("鍵交換相手の変数を宣言まではできたよ");
 		if(peer.getRoundList( round ).getbehavior().equals("Exchange")){
-                    System.out.println("Round "+(round+1)+":Exchange");                      
+                    System.out.println("Round "+(round+1)+":Exchange");
+                    
 			//送信するPeerの数が一人のとき
 			if(peer.getRoundList(round).getSendTo().getListSize()==1){
                             try{                        
