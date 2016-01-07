@@ -16,18 +16,17 @@ import java.net.Socket;
 public class FromSend {
 	private Socket socket;
 	ServerSocket serversoc;
-	public FromSend(int roundport){//不正検知がOFFの時のコンストラクタ
+        //不正検知がOFFの時のコンストラクタ
+	public FromSend(int roundport){
 		 try {
 			serversoc = new ServerSocket(roundport,100);
-			
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 	}
-        
-        public FromSend(String peerip,String serverip,int roundport){//不正検知がONの時のコンストラクタ
-		
+        //不正検知がONの時のコンストラクタ
+        public FromSend(String peerip,String serverip,int roundport){
                  try {
                     System.out.println("ソケットを生成/ServerSocketに接続を要求します");
                     System.out.println(serverip+":"+roundport);
