@@ -13,11 +13,9 @@ import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-
 public class SendFrom {
 	private Socket socket;
         private ServerSocket serversoc;
-        
         //不正検知がOFFの時のコンストラクタ
 	public  SendFrom(String peerip,int roundport){
 		try {
@@ -27,10 +25,8 @@ public class SendFrom {
 			e.printStackTrace();
 		}
 	}
-        
         //不正検知がONの時のコンストラクタ
         public  SendFrom(String peerip,String serverip,int roundport){
-           
 		try {
                     System.out.println("ソケットを生成/ServerSocketに接続を要求します");
                     System.out.println(serverip+":"+roundport);
