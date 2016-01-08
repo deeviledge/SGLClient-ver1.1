@@ -195,13 +195,14 @@ public class RoundMain {
                             try{                        
                                 SendToID = peer.getRoundList(round).getSendTo().getPeerList(0).getID();	//送信する相手のIDを取得
                                 SendToIP = peer.getRoundList(round).getSendTo().getPeerList(0).getIP();	//IPを取得
-                                //パターン①自分がダミーユーザの時：
-                               
+                                
+                                /*パターン①自分がダミーユーザの時：
+                                クライアントから直接鍵を受信する*/
                                 if(SendToID<0){		
                                     System.out.println("ダミーユーザです。公開鍵受け取り待ち");
                                     GetPKey GP = new GetPKey(Round_Port);
                                     String line = GP.KeyExchange();
-                                    //　受信したものが公開鍵と確認できれば共通鍵の計算
+                                    //受信したものが公開鍵と確認できれば共通鍵の計算
                                     if( line.substring(0,3).equals("pk:") ){
                                         System.out.println("秘密鍵の作成中...");
                                         String key = line.substring(3);
@@ -210,7 +211,8 @@ public class RoundMain {
                                         //System.out.println("共通鍵:"+ exKey.getKey());
                                     }
                                 				
-                                //パターン②自分がユーザの時：鍵を送信して受信する
+                                /*パターン②自分がメインユーザの時：
+                                サーバに鍵を送信し、サーバから相手の公開鍵を受信する*/
                                 }else{
                                     System.out.println("User "+SendToID+"と交換します");
                                     Wait();	//通信相手ポートをオープンするまで少し待つ
@@ -220,7 +222,7 @@ public class RoundMain {
                                     System.out.println(mi.getUsrID()+":"+Round_Port);
                                     SendFrom SF=new SendFrom(SendToIP,serverIP,Round_Port);
                                     String line = SF.KeyExchange(exKey.getPublicKey());		//受信した公開鍵を取得
-                                    //　受信したものが公開鍵と確認できれば共通鍵の計算
+                                    //受信したものが公開鍵と確認できれば共通鍵の計算
                                     if( line.substring(0,3).equals("pk:") ){
                                         System.out.println("秘密鍵の作成中...");
                                         String key = line.substring(3);
@@ -240,7 +242,10 @@ public class RoundMain {
                             try{
                                 ReceiveFromID = peer.getRoundList(round).getReceiveFrom().getID();	//受信する相手のIDを取得
                                 ReceiveFromIP = peer.getRoundList(round).getReceiveFrom().getIP();	//受信する相手のIPを取得
-                                /*パターン④先に自分の公開鍵を送る*/
+                                
+                                /*パターン④自分がメインユーザの時:
+                                サーバに自分の公開鍵を送信して、サーバから相手の公開鍵を受信、
+                                そのあとダミーユーザに直接公開鍵を送信する*/
                                 if(myid<ReceiveFromID){
                                     System.out.println("User "+ReceiveFromID+"と交換します");
                                     Wait();	//通信相手がポートをオープンするまで少し待つ
@@ -256,7 +261,7 @@ public class RoundMain {
                                         //System.out.println("共通鍵:"+ exKey.getKey());
                                     }
                                 }
-                                //ダミーユーザに鍵を送る
+                                //ダミーユーザに鍵を送る処理
                                 System.out.println("ダミーユーザに鍵を送信します");
                                 SendToIP = peer.getRoundList(round).getSendTo().getPeerList(1).getIP();	//送信相手のIPを取得
                                 SendPKey SPK = new SendPKey(SendToIP,Round_Port);
