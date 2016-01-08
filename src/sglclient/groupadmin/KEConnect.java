@@ -49,7 +49,8 @@ public class KEConnect extends Thread{
 				int round = Integer.parseInt(in.readLine());
 				System.out.println("Round:"+(round+1)+"を開始します");
 				RoundMain rm = new RoundMain(round);
-				rm.KeyExchange();//RoundMain.javaのKeyExchangeメソッドの実行
+				//rm.KeyExchange();//RoundMain.javaのKeyExchangeメソッドの実行
+                                rm.SecureKeyExchange();
                                 //鍵配送指令所の解析、Peerの呼び出し、条件分岐による交換処理
                                 
 				InformServer();//Socketの生成、入出力ストリームの取得、交換終了通知、公開鍵の提出
