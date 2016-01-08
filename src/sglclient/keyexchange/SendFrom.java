@@ -32,8 +32,8 @@ public class SendFrom {
                     System.out.println(serverip+":"+roundport);
                     serversoc = new ServerSocket(roundport);
                     socket=serversoc.accept();
-                    socket.close();
-                    serversoc.close();
+                    //socket.close();
+                    //serversoc.close();
                     
                     System.out.println("SGLサーバ："+socket.getInetAddress()+"との接続完了");//接続先アドレスを返して表示
 		} catch (IOException e) {
