@@ -56,10 +56,10 @@ public class SendFrom {
 			String input = "pk:";
 			input += ""+pk;//文字列変換
 			out.println(input);
-			//System.out.println("Peer client :" + "送信:" + input);
+			System.out.println("Peer client key送信:" + input);
 			//公開鍵を受信
 			line = in.readLine();
-			//System.out.println("Peer client :" + "受信:" + line);
+			System.out.println("Peer client :" + "受信:" + line);
 			socket.close();
 			in.close();
 			out.close();
