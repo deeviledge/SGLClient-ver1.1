@@ -16,7 +16,7 @@ import org.w3c.dom.NodeList;
 /**
  * 鍵交換指令書の読み込みと動作
  */
-class Mandate {
+public class Mandate {
 	/**
 	 * KeyAgreementクラスの変数
 	 */
