@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import sglclient.keyexchange.KEClient;
@@ -48,10 +49,32 @@ public class KEConnect extends Thread{
 			if(input.equals("roundstart")){
 				int round = Integer.parseInt(in.readLine());
 				System.out.println("Round:"+(round+1)+"を開始します");
-				RoundMain rm = new RoundMain(round);
-				//rm.KeyExchange();//RoundMain.javaのKeyExchangeメソッドの実行
-                                rm.SecureKeyExchange();
-                                //鍵配送指令所の解析、Peerの呼び出し、条件分岐による交換処理
+                                
+                                /*新規追加コード*/
+                                
+                                GetRoundInformation gri=new GetRoundInformation(round);
+                                
+                                int option=0;
+                                if(option==1){
+                                    if(gri.CompareID()){//自分がダミーユーザではない、かつ送信先のIDが自分より若い時
+                                        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                                        out.println(gri.GetSendToID());
+                                        out.println(gri.GetMyID());
+                                    }
+                                    RoundMain rm = new RoundMain(round);
+                                    //rm.KeyExchange();//RoundMain.javaのKeyExchangeメソッドの実行
+                                    rm.SecureKeyExchange();
+                                    //鍵配送指令所の解析、Peerの呼び出し、条件分岐による交換処理
+                                }else{
+                                    RoundMain rm = new RoundMain(round);
+                                    //rm.KeyExchange();//RoundMain.javaのKeyExchangeメソッドの実行
+                                    rm.KeyExchange();
+                                    //鍵配送指令所の解析、Peerの呼び出し、条件分岐による交換処理
+                                }
+                                /*新規追加コード*/
+                                
+                                
+				
                                 
 				InformServer();//Socketの生成、入出力ストリームの取得、交換終了通知、公開鍵の提出
 				socket.close();
