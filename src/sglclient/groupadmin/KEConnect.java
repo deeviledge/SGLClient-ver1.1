@@ -53,7 +53,6 @@ public class KEConnect extends Thread{
                                 /*新規追加コード*/
                                 
                                 GetRoundInformation gri=new GetRoundInformation(round);
-                                
                                 int option=0;
                                 if(option==1){
                                     if(gri.CompareID()){//自分がダミーユーザではない、かつ送信先のIDが自分より若い時
