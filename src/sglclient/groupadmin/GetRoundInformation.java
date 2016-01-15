@@ -7,7 +7,17 @@ package sglclient.groupadmin;
 
 import java.math.BigInteger;
 import sglclient.keyexchange.*;
-import sglclient.myinformation.*;
+import sglclient.keyexchange.FromSend;
+import sglclient.keyexchange.KeyAgreement;
+import sglclient.keyexchange.Peer;
+import sglclient.keyexchange.Round;
+import sglclient.keyexchange.Mandate;
+import sglclient.keyexchange.KEClient;
+import sglclient.keyexchange.SaveKey;
+import sglclient.keyexchange.SendFrom;
+
+
+import sglclient.myinformation.MyInformation;
 
 
 /**
