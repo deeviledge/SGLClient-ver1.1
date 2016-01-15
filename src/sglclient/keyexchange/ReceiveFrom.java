@@ -9,7 +9,7 @@ package sglclient.keyexchange;
 /**
  * ReceiveFromクラス
  */
-class ReceiveFrom extends IDetc {
+public class ReceiveFrom extends IDetc {
 	/**
 	 * コンストラクタ
 	 */

@@ -9,7 +9,7 @@ package sglclient.keyexchange;
 /**
  * SendToPeerクラス
  */
-class SendToPeer extends IDetc {
+public class SendToPeer extends IDetc {
 	/**
 	 * コンストラクタ
 	 */

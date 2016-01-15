@@ -9,7 +9,7 @@ package sglclient.keyexchange;
 /**
  * Roundクラス
  */
-class Round {
+public class Round {
 	/**
 	 * ラウンド番号
 	 */

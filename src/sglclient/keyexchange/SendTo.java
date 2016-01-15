@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * SendToクラス
  */
-class SendTo {
+public class SendTo {
 	/**
 	 * SendTo内のPeer sendToPeer
 	 */

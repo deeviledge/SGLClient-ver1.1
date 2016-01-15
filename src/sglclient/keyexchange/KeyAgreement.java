@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * KeyAgreementクラス
  */
-class KeyAgreement {
+public class KeyAgreement {
 	/**
 	 * 鍵交換ID
 	 */
