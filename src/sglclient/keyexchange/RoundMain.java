@@ -62,7 +62,7 @@ public class RoundMain {
                                     SendToID = peer.getRoundList(round).getSendTo().getPeerList(0).getID();	//送信する相手のIDを取得
                                     SendToIP = peer.getRoundList(round).getSendTo().getPeerList(0).getIP();	//IPを取得       
                                     //パターン①自分がダミーのとき
-                                    if(SendToID<0){		
+                                    if(SendToID<0 || SendToID==myid){		
                                             System.out.println("ダミーユーザです。公開鍵受け取り待ち");
                                             GetPKey GP = new GetPKey(Round_Port);
                                             String line = GP.KeyExchange();
